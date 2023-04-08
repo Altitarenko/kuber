@@ -1,0 +1,23 @@
+#-------------------------------------------------------------
+# Create Simple Deployment 
+#-------------------------------------------------------------
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: deployment-1
+  labels:
+    app : my-app1
+spec:
+  selector:
+    matchLabels:
+      project: test
+  template:
+    metadata:
+      labels:
+        project: test
+    spec:
+      containers:
+        - name : test-web
+          image: torenych/my_httpd:latest
+          ports:
+            - containerPort: 80
